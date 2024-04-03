@@ -1,4 +1,4 @@
-package com.example.template.config;
+package com.bright9.finalproject.order.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;

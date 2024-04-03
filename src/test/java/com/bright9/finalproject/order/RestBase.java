@@ -1,4 +1,4 @@
-package com.example.template;
+package com.bright9.finalproject.order;
 
 import io.restassured.RestAssured;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;

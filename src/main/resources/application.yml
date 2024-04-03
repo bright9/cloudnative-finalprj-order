@@ -19,9 +19,25 @@ server:
 ---
 spring:
   profiles: docker
-#  sleuth:
-#    sampler:
-#      probability: 1
-#    web:
-#      skipPattern: (^cleanup.*|.+favicon.*)
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: my-kafka:9092
+        streams:
+          binder:
+            configuration:
+              default:
+                key:
+                  serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+                value:
+                  serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+      bindings:
+        event-in:
+          group: order
+          destination: FinalProject
+          contentType: application/json
+        event-out:
+          destination: FinalProject
+          contentType: application/json
 
