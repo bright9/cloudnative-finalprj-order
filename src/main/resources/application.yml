@@ -40,4 +40,3 @@ spring:
         event-out:
           destination: FinalProject
           contentType: application/json
-
