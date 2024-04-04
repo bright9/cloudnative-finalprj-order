@@ -23,8 +23,6 @@ public class Order {
 
     private String customerId;
 
-    private Double amount;
-
     private String status;
 
     private String address;
