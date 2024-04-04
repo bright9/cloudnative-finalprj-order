@@ -34,10 +34,8 @@ public class Order {
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
 
-        OrderCancelled orderCancelled = new OrderCancelled(this);
-        orderCancelled.publishAfterCommit();
-
-        System.out.print("called onPostPersist()");
+//        OrderCancelled orderCancelled = new OrderCancelled(this);
+//        orderCancelled.publishAfterCommit();
     }
 
     @PreRemove
@@ -52,24 +50,11 @@ public class Order {
 
     //<<< Clean Arch / Port Method
     public static void updateStatus(OutOfStock outOfStock) {
-        //implement business logic here:
+        repository().findById(outOfStock.getOrderId()).ifPresent(order ->{
 
-        /** Example 1:  new item 
-        Order order = new Order();
-        repository().save(order);
-
-        */
-
-        /** Example 2:  finding and process
-        
-        repository().findById(outOfStock.get???()).ifPresent(order->{
-            
-            order // do something
+            order.setStatus("OrderCancelled");
             repository().save(order);
-
-
-         });
-        */
+        });
 
     }
     //>>> Clean Arch / Port Method
