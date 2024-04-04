@@ -31,6 +31,12 @@ public class Order {
 
     @PostPersist
     public void onPostPersist() {
+        repository().findById(id).ifPresent(order ->{
+
+            order.setStatus("OrderPlaced");
+            repository().save(order);
+        });
+
         OrderPlaced orderPlaced = new OrderPlaced(this);
         orderPlaced.publishAfterCommit();
 
