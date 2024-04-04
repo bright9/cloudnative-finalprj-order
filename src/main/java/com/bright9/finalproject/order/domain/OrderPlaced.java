@@ -10,7 +10,7 @@ import lombok.*;
 public class OrderPlaced extends AbstractEvent {
 
     private Long id;
-    private String productId;
+    private Long productId;
     private Integer qty;
     private String customerId;
     private Double amount;

@@ -17,7 +17,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String productId;
+    private Long productId;
 
     private Integer qty;
 
@@ -60,6 +60,9 @@ public class Order {
 
             order.setStatus("OrderCancelled");
             repository().save(order);
+
+            OrderCancelled orderCancelled = new OrderCancelled(order);
+            orderCancelled.publishAfterCommit();
         });
 
     }
