@@ -36,6 +36,8 @@ public class Order {
 
         OrderCancelled orderCancelled = new OrderCancelled(this);
         orderCancelled.publishAfterCommit();
+
+        System.out.print("called onPostPersist()");
     }
 
     @PreRemove
